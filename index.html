@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>404 Not Found</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    height: 100vh;
+    background: linear-gradient(180deg, #020c1b 0%, #0a1628 15%, #0d2847 35%, #0f3460 55%, #1a5276 70%, #1f6f8b 82%, #2e8b98 92%, #3aafa9 100%);
+    color: #c8e6f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.handwritten { font-family: 'Dancing Script', cursive; }
+
+/* ═══════════════════════════════════════
+   404 PAGE – OCEAN THEMED
+   ═══════════════════════════════════════ */
+.error-ocean {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    padding: 40px;
+    animation: errorFloat 3s ease-in-out infinite;
+}
+@keyframes errorFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.error-ocean h1 {
+    font-size: 100px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a8e6ff 0%, #5bc0eb 40%, #ff9eb5 70%, #fcc2d7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 4px;
+    position: relative;
+}
+.error-ocean h1::after {
+    content: '🐟';
+    position: absolute;
+    font-size: 28px;
+    top: 10px;
+    right: -36px;
+    animation: fishBob404 2s ease-in-out infinite;
+    -webkit-text-fill-color: initial;
+}
+@keyframes fishBob404 {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(10deg); }
+}
+.error-ocean h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(168,230,255,0.7);
+    margin-bottom: 22px;
+    letter-spacing: 2px;
+}
+.error-ocean p {
+    font-size: 14px;
+    color: rgba(168,230,255,0.45);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.error-ocean .fish-divider {
+    font-size: 20px;
+    letter-spacing: 12px;
+    margin-bottom: 20px;
+    opacity: 0.4;
+    animation: swimDivider 4s ease-in-out infinite;
+}
+@keyframes swimDivider {
+    0%,100% { letter-spacing: 12px; }
+    50% { letter-spacing: 18px; }
+}
+.error-ocean ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 32px;
+    font-size: 13px;
+    color: rgba(168,230,255,0.4);
+}
+.error-ocean ul li {
+    margin-bottom: 6px;
+}
+.error-ocean ul li::before {
+    content: '🫧 ';
+    font-size: 11px;
+}
+.refresh-btn {
+    font-family: 'Quicksand', sans-serif;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(168,230,255,0.2);
+    color: #a8e6ff;
+    padding: 14px 36px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+.refresh-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(168,230,255,0.15), rgba(255,158,181,0.15));
+    opacity: 0;
+    transition: opacity 0.4s;
+    border-radius: 50px;
+}
+.refresh-btn:hover {
+    transform: scale(1.08);
+    border-color: rgba(168,230,255,0.5);
+    box-shadow: 0 0 30px rgba(168,230,255,0.15), 0 0 60px rgba(91,192,235,0.08);
+}
+.refresh-btn:hover::before { opacity: 1; }
+.refresh-btn span { position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════
+   SHARED OCEAN ANIMATIONS
+   ═══════════════════════════════════════ */
+@keyframes bubbleUp {
+    0%   { transform: translateY(100vh) translateX(0) scale(0.4); opacity: 0; }
+    10%  { opacity: 0.6; }
+    50%  { transform: translateY(50vh) translateX(30px) scale(0.7); opacity: 0.4; }
+    100% { transform: translateY(-10vh) translateX(-20px) scale(1); opacity: 0; }
+}
+.bubble {
+    position: fixed;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+    border: 1px solid rgba(255,255,255,0.12);
+    pointer-events: none;
+    z-index: 1;
+}
+@keyframes swimRight {
+    0%   { transform: translateX(-150px) translateY(0px) scaleX(1); }
+    25%  { transform: translateX(25vw) translateY(-20px) scaleX(1); }
+    50%  { transform: translateX(50vw) translateY(10px) scaleX(1); }
+    75%  { transform: translateX(75vw) translateY(-15px) scaleX(1); }
+    100% { transform: translateX(110vw) translateY(5px) scaleX(1); }
+}
+@keyframes swimLeft {
+    0%   { transform: translateX(110vw) translateY(0px) scaleX(-1); }
+    25%  { transform: translateX(75vw) translateY(15px) scaleX(-1); }
+    50%  { transform: translateX(50vw) translateY(-10px) scaleX(-1); }
+    75%  { transform: translateX(25vw) translateY(20px) scaleX(-1); }
+    100% { transform: translateX(-150px) translateY(-5px) scaleX(-1); }
+}
+.fish {
+    position: fixed;
+    pointer-events: none;
+    z-index: 2;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
+}
+@keyframes lightRay {
+    0%, 100% { opacity: 0.02; }
+    50% { opacity: 0.07; }
+}
+.light-ray {
+    position: fixed;
+    top: -20%;
+    width: 100px;
+    height: 130%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 75%);
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes sway {
+    0%, 100% { transform: rotate(-6deg); }
+    50%  { transform: rotate(6deg); }
+}
+@keyframes jellyfishFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-25px) rotate(5deg); }
+    75% { transform: translateY(15px) rotate(-3deg); }
+}
+@keyframes waveMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ── CAUSTIC LIGHT PATTERN ── */
+@keyframes caustics {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 200%; }
+}
+.caustic-overlay {
+    position: fixed;
+    inset: 0;
+    opacity: 0.03;
+    background: repeating-conic-gradient(rgba(255,255,255,0.1) 0% 25%, transparent 0% 50%) 0 0 / 60px 60px;
+    animation: caustics 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── PARTICLES / PLANKTON ── */
+@keyframes drift {
+    0% { transform: translate(0,0); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.6; }
+    100% { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+}
+.plankton {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(168,230,255,0.5);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ═══════════════════════════════════════
+   ENVELOPE
+   ═══════════════════════════════════════ */
+.envelope-scene {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The envelope itself */
+.envelope-container {
+    position: relative;
+    width: 340px;
+    cursor: pointer;
+    overflow: visible;
+    transition: transform 0.3s ease;
+}
+.envelope-container:hover {
+    transform: scale(1.02);
+}
+.envelope-container:active {
+    transform: scale(0.98);
+}
+
+/* ── ENVELOPE BODY ── */
+.envelope-body {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(145deg, #f5f0e8 0%, #ede4d4 30%, #e8dcc8 70%, #ddd0bb 100%);
+    border-radius: 10px;
+    box-shadow: 
+        0 12px 50px rgba(0,0,0,0.35),
+        0 4px 15px rgba(0,0,0,0.2),
+        inset 0 2px 0 rgba(255,255,255,0.4),
+        inset 0 -2px 5px rgba(139,90,43,0.08);
+    z-index: 5;
+    animation: envelopeFloat 3s ease-in-out infinite;
+    border: 2px solid rgba(194,166,120,0.3);
+}
+@keyframes envelopeFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+/* decorative heart border pattern */
+.envelope-body::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    pointer-events: none;
+    background: 
+        linear-gradient(#f0e6d8, #f0e6d8) padding-box,
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,158,181,0.15) 0px,
+            rgba(255,158,181,0.15) 4px,
+            transparent 4px,
+            transparent 12px
+        ) border-box;
+}
+
+/* envelope texture lines */
+.envelope-texture {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.envelope-texture span {
+    height: 2px;
+    border-radius: 1px;
+    background: rgba(139,90,43,0.1);
+}
+.envelope-texture span:nth-child(1) { width: 70%; }
+.envelope-texture span:nth-child(2) { width: 55%; }
+.envelope-texture span:nth-child(3) { width: 40%; }
+
+/* stamp */
+.stamp {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 48px;
+    height: 58px;
+    background: linear-gradient(135deg, #d4e8fc 0%, #b8d9f5 50%, #9ec9ed 100%);
+    border: 3px solid #fff;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 
+        0 3px 8px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.5);
+    z-index: 6;
+    position: relative;
+}
+/* postmark circle */
+.stamp::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 2px dashed rgba(0,0,0,0.15);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* TO label */
+.envelope-to {
+    position: absolute;
+    top: 70px;
+    left: 28px;
+    z-index: 6;
+}
+.envelope-to p:first-child {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(120,80,30,0.35);
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+.envelope-to p:last-child {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+    color: #5a3a1a;
+    line-height: 1.3;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+}
+
+/* seal / wax */
+.wax-seal {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 56px;
+    background: 
+        radial-gradient(circle at 30% 30%, #ff6b8a 0%, #e74c6f 25%, #c0392b 60%, #922b21 100%);
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 
+        0 4px 20px rgba(192,57,43,0.5),
+        0 2px 8px rgba(0,0,0,0.3),
+        inset 0 -3px 6px rgba(0,0,0,0.3),
+        inset 0 3px 6px rgba(255,107,138,0.4),
+        inset 0 0 0 2px rgba(146,43,33,0.3);
+    transition: transform 0.6s, opacity 0.6s;
+    border: 3px solid rgba(146,43,33,0.2);
+}
+/* wax texture */
+.wax-seal::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, transparent 30%, rgba(0,0,0,0.1) 70%);
+    pointer-events: none;
+}
+.envelope-container.opened .wax-seal {
+    transform: translateX(-50%) scale(0) rotate(180deg);
+    opacity: 0;
+}
+
+/* ── FLAP (top triangle) ── */
+.envelope-flap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 110px;
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 7;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+.flap-front {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #ede4d4 0%, #e8dcc8 50%, #ddd0bb 100%);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    backface-visibility: hidden;
+    border-left: 2px solid rgba(194,166,120,0.3);
+    border-right: 2px solid rgba(194,166,120,0.3);
+}
+/* subtle fold line */
+.flap-front::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(139,90,43,0.1) 50%, transparent);
+}
+.flap-back {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #c9b896 0%, #d4c4a8 50%, #c2a676 100%);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    backface-visibility: hidden;
+    transform: rotateX(180deg);
+}
+/* opened state - flap opens */
+.envelope-container.opened .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+/* ── THE LETTER (appears above envelope when opened) ── */
+.letter-paper {
+    position: absolute;
+    left: 5%;
+    width: 90%;
+    bottom: 100%;
+    margin-bottom: -60px;
+    background: 
+        linear-gradient(135deg, #fffef9 0%, #fdfcf5 100%);
+    border-radius: 8px;
+    z-index: 4;
+    box-shadow: 
+        0 8px 30px rgba(0,0,0,0.2),
+        0 4px 10px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    padding: 28px 22px 24px;
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 0.8s 0.4s, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
+    pointer-events: none;
+    border: 1px solid rgba(194,166,120,0.2);
+    position: relative;
+}
+/* aged paper effect - corner fold */
+.letter-paper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 0;
+    border-color: transparent #e8dcc8 transparent transparent;
+    filter: drop-shadow(-1px 1px 2px rgba(0,0,0,0.1));
+}
+/* coffee stain effect */
+.letter-paper::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    right: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(194,166,120,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.envelope-container.opened .letter-paper {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* ── Hint text ── */
+.envelope-hint {
+    margin-top: 28px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(168,230,255,0.4);
+    animation: hintPulse 2s ease-in-out infinite;
+    text-align: center;
+}
+@keyframes hintPulse {
+    0%,100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+/* ═══════════════════════════════════════
+   VALENTINE CARD (after envelope)
+   ═══════════════════════════════════════ */
+.ocean-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    z-index: 30;
+    width: 92%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 28px;
+    padding: 36px 30px;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08);
+    animation: cardAppear 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+}
+@keyframes cardAppear {
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+.ocean-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, rgba(110,200,255,0.25), rgba(255,150,200,0.2), rgba(110,200,255,0.25));
+    z-index: -1;
+    animation: borderGlow 3s ease-in-out infinite alternate;
+}
+@keyframes borderGlow {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+@keyframes cardFloat {
+    0%, 100% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, calc(-50% - 10px)); }
+}
+
+/* ── SPARKLES ── */
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+@keyframes kissLeft {
+    0%, 100% { transform: translateX(-18px) scaleX(1); }
+    50% { transform: translateX(2px) scaleX(1); }
+}
+@keyframes kissRight {
+    0%, 100% { transform: translateX(18px) scaleX(-1); }
+    50% { transform: translateX(-2px) scaleX(-1); }
+}
+@keyframes heartPop {
+    0%, 40% { opacity: 0; transform: translateY(0) scale(0); }
+    50% { opacity: 1; transform: translateY(-5px) scale(1.3); }
+    70% { opacity: 1; transform: translateY(-15px) scale(1); }
+    100% { opacity: 0; transform: translateY(-28px) scale(0.4); }
+}
+@keyframes floatHeart {
+    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    100% { transform: translateY(-100px) scale(0.2); opacity: 0; }
+}
+
+/* ── SAND FLOOR ── */
+.sand-floor {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(180deg, transparent 0%, rgba(194,166,120,0.15) 40%, rgba(194,166,120,0.25) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+.sand-floor::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 6px;
+    background: repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(194,166,120,0.08) 20px, rgba(194,166,120,0.08) 40px);
+    animation: waveMove 12s linear infinite;
+}
+
+/* ── SEAHORSE ── */
+@keyframes seahorseBob {
+    0%,100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-20px) rotate(3deg); }
+}
+
+/* ── TURTLE ── */
+@keyframes turtleSwim {
+    0%   { transform: translateX(-80px) translateY(0px) rotate(-2deg); }
+    25%  { transform: translateX(25vw) translateY(-12px) rotate(1deg); }
+    50%  { transform: translateX(50vw) translateY(5px) rotate(-1deg); }
+    75%  { transform: translateX(75vw) translateY(-8px) rotate(2deg); }
+    100% { transform: translateX(110vw) translateY(3px) rotate(-2deg); }
+}
+
+/* ── CONFETTI BURST ── */
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg) scale(0.3); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ OCEAN 404 PAGE ═══ -->
+<div class="caustic-overlay"></div>
+
+<div class="error-ocean" id="error">
+    <div class="fish-divider">🐠 🐟 🐡 🐠</div>
+    <h1>404</h1>
+    <h2>🌊 Lost at Sea 🌊</h2>
+    <p>The page you're looking for has drifted away into the deep ocean currents... perhaps a fish swallowed it? 🐡</p>
+    <ul>
+        <li>The URL may have floated away</li>
+        <li>This page sank to the ocean floor</li>
+        <li>Maybe a curious fish took it</li>
+    </ul>
+    <button class="refresh-btn" onclick="showEnvelope()">
+        <span>🐚 Dive Deeper 🐚</span>
+    </button>
+</div>
+
+<script>
+// ═══ SHARED: spawn ocean background for any phase ═══
+function spawnOceanBG() {
+    // Light rays
+    for (let i = 0; i < 6; i++) {
+        const ray = document.createElement('div');
+        ray.className = 'light-ray';
+        ray.style.left = (i * 18 + 3) + '%';
+        ray.style.animation = `lightRay ${4 + Math.random()*5}s ease-in-out infinite`;
+        ray.style.animationDelay = (i * 0.7) + 's';
+        ray.style.transform = `rotate(${8 + Math.random()*18}deg)`;
+        document.body.appendChild(ray);
+    }
+    // Caustic
+    if (!document.querySelector('.caustic-overlay')) {
+        const c = document.createElement('div');
+        c.className = 'caustic-overlay';
+        document.body.appendChild(c);
+    }
+}
+
+// ═══ SHARED: bubbles ═══
+function startBubbles() {
+    function spawn() {
+        const b = document.createElement('div');
+        b.className = 'bubble';
+        const s = 5 + Math.random() * 25;
+        b.style.width = s + 'px';
+        b.style.height = s + 'px';
+        b.style.left = Math.random() * 100 + 'vw';
+        b.style.bottom = '-20px';
+        const d = 6 + Math.random() * 9;
+        b.style.animation = `bubbleUp ${d}s ease-in forwards`;
+        document.body.appendChild(b);
+        setTimeout(() => b.remove(), d * 1000);
+    }
+    setInterval(spawn, 450);
+    for(let i=0;i<10;i++) setTimeout(spawn, i*180);
+}
+
+// ═══ SHARED: swimming fish ═══
+function startFish() {
+    const fishImages = [
+        'fish.gif',
+        'fish.png',
+        'magikarp-fish.gif',
+        'olololooo-fish-mouth.gif',
+        'ว่าง.gif'
+    ];
+    function spawn() {
+        const f = document.createElement('div');
+        f.className = 'fish';
+        const img = document.createElement('img');
+        img.src = fishImages[Math.floor(Math.random()*fishImages.length)];
+        const size = 40 + Math.random()*60;
+        img.style.height = size + 'px';
+        img.style.width = 'auto';
+        img.style.display = 'block';
+        f.appendChild(img);
+        f.style.top = (8 + Math.random()*82) + 'vh';
+        const right = Math.random() > 0.5;
+        const d = 11 + Math.random()*13;
+        f.style.animation = `${right?'swimRight':'swimLeft'} ${d}s linear forwards`;
+        f.style.opacity = 0.5 + Math.random()*0.5;
+        document.body.appendChild(f);
+        setTimeout(() => f.remove(), d*1000);
+    }
+    setInterval(spawn, 2800);
+    for(let i=0;i<5;i++) setTimeout(spawn, i*500);
+}
+
+// ═══ SHARED: plankton particles ═══
+function startPlankton() {
+    function spawn() {
+        const p = document.createElement('div');
+        p.className = 'plankton';
+        p.style.left = Math.random()*100 + 'vw';
+        p.style.top = Math.random()*100 + 'vh';
+        p.style.setProperty('--dx', (Math.random()*80-40)+'px');
+        p.style.setProperty('--dy', (Math.random()*80-40)+'px');
+        const d = 5+Math.random()*8;
+        p.style.animation = `drift ${d}s ease-in-out forwards`;
+        document.body.appendChild(p);
+        setTimeout(()=>p.remove(), d*1000);
+    }
+    setInterval(spawn, 300);
+    for(let i=0;i<20;i++) setTimeout(spawn, i*100);
+}
+
+// ═══ SHARED: seaweed ═══
+function addSeaweed() {
+    const c = document.createElement('div');
+    c.style.cssText = 'position:fixed;bottom:0;left:0;width:100%;height:100px;pointer-events:none;z-index:3;display:flex;align-items:flex-end;justify-content:space-around;padding:0 5px;';
+    const items = ['🌿','🌱','🪸','🐚','⭐','🪸','🌿'];
+    for (let i = 0; i < 14; i++) {
+        const s = document.createElement('div');
+        s.style.fontSize = (26+Math.random()*22)+'px';
+        s.style.transformOrigin = 'bottom center';
+        s.style.animation = `sway ${2+Math.random()*2}s ease-in-out infinite`;
+        s.style.animationDelay = Math.random()*2+'s';
+        s.style.opacity = '0.45';
+        s.textContent = items[Math.floor(Math.random()*items.length)];
+        c.appendChild(s);
+    }
+    document.body.appendChild(c);
+    // sand floor
+    const sand = document.createElement('div');
+    sand.className = 'sand-floor';
+    document.body.appendChild(sand);
+}
+
+// ═══ SHARED: wave top ═══
+function addWave() {
+    const w = document.createElement('div');
+    w.style.cssText = 'position:fixed;top:-3px;left:0;width:200%;height:35px;z-index:5;pointer-events:none;opacity:0.12;';
+    w.style.background = 'url("data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 40"><path fill="white" d="M0,20 Q150,0 300,20 T600,20 T900,20 T1200,20 L1200,0 L0,0 Z"/></svg>') + '") repeat-x';
+    w.style.animation = 'waveMove 8s linear infinite';
+    document.body.appendChild(w);
+}
+
+// ═══ Init 404 page background ═══
+spawnOceanBG();
+startBubbles();
+startFish();
+startPlankton();
+addSeaweed();
+addWave();
+
+// jellyfish
+for (let i = 0; i < 3; i++) {
+    const j = document.createElement('div');
+    j.style.cssText = `position:fixed;font-size:${28+Math.random()*18}px;left:${8+Math.random()*84}%;top:${12+Math.random()*60}%;opacity:0.2;pointer-events:none;z-index:1;`;
+    j.style.animation = `jellyfishFloat ${5+Math.random()*4}s ease-in-out infinite`;
+    j.style.animationDelay = i*1.2+'s';
+    j.textContent = '🪼';
+    document.body.appendChild(j);
+}
+
+// seahorse
+const sh = document.createElement('div');
+sh.style.cssText = 'position:fixed;font-size:34px;right:8%;bottom:80px;opacity:0.3;pointer-events:none;z-index:3;';
+sh.style.animation = 'seahorseBob 4s ease-in-out infinite';
+sh.textContent = '🦑';
+document.body.appendChild(sh);
+
+// schools of fish bg
+const schoolFishImgs = ['fish/fish.gif','fish/fish.png','fish/magikarp-fish.gif','fish/olololooo-fish-mouth.gif','fish/ว่าง.gif'];
+for(let i=0;i<4;i++){
+    const sc = document.createElement('div');
+    sc.style.cssText = `position:fixed;display:flex;gap:8px;opacity:0.18;top:${15+Math.random()*65}%;pointer-events:none;z-index:1;`;
+    for(let j=0;j<4;j++){
+        const im = document.createElement('img');
+        im.src = schoolFishImgs[Math.floor(Math.random()*schoolFishImgs.length)];
+        im.style.height = '22px';
+        im.style.width = 'auto';
+        sc.appendChild(im);
+    }
+    const d=16+Math.random()*10;
+    sc.style.animation = `swimRight ${d}s linear infinite`;
+    sc.style.animationDelay = i*4+'s';
+    document.body.appendChild(sc);
+}
+
+// ══════════════════════════════════════════════
+// PHASE 2: ENVELOPE
+// ══════════════════════════════════════════════
+function showEnvelope() {
+    const err = document.getElementById('error');
+    err.style.transition = 'opacity 0.6s, transform 0.6s';
+    err.style.opacity = '0';
+    err.style.transform = 'translateY(30px) scale(0.9)';
+
+    setTimeout(() => {
+        err.remove();
+
+        const scene = document.createElement('div');
+        scene.className = 'envelope-scene';
+        scene.innerHTML = `
+            <div class="envelope-container" id="envelope" onclick="openEnvelope()">
+
+                <!-- Envelope body -->
+                <div class="envelope-body">
+                    <div class="envelope-to">
+                        <p>To:</p>
+                        <p>Glyza S. Coloma 💌</p>
+                    </div>
+                    <div class="stamp">🐠</div>
+                    
+                    <!-- Decorative ocean stickers -->
+                    <div style="position:absolute;top:12px;left:16px;font-size:16px;opacity:0.25;transform:rotate(-12deg);">🐚</div>
+                    <div style="position:absolute;bottom:18px;right:20px;font-size:14px;opacity:0.2;transform:rotate(15deg);">⭐</div>
+                    <div style="position:absolute;bottom:45px;left:18px;font-size:12px;opacity:0.18;">🫧</div>
+                    
+                    <div class="envelope-texture">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <!-- Wax seal -->
+                    <div class="wax-seal" id="waxSeal">❤</div>
+                </div>
+
+                <!-- Flap -->
+                <div class="envelope-flap">
+                    <div class="flap-front"></div>
+                    <div class="flap-back"></div>
+                </div>
+
+                <!-- Letter (appears ABOVE envelope when opened) -->
+                <div class="letter-paper" id="letterPaper">
+                    <div style="text-align:center;">
+                        <div style="margin-bottom:14px;opacity:0.15;font-size:10px;">🐚 🌊 🐚</div>
+                        <p style="font-family:'Dancing Script',cursive;font-size:26px;color:#5a3a1a;margin-bottom:14px;text-shadow:0 1px 2px rgba(255,255,255,0.8);">Dear Glyza,</p>
+                        <p style="font-size:13px;color:#6b5344;line-height:2;margin-bottom:18px;font-style:italic;padding:0 10px;text-align:center;">
+                            "You’re the only woman I’ll ever have eyes for as long as I live. Of all the lives that exist, I am so happy to exist in
+                             <strong style="color:#c0392b;">yours</strong>. 🌊<br><br>
+                            You are my favorite fish<br>
+                            in the sea." 🐡💗
+                        </p>
+                        <div style="font-size:34px;margin:18px 0;">🐠 💕 🐟</div>
+                        <p style="font-family:'Dancing Script',cursive;font-size:20px;color:#c0392b;font-weight:600;margin-bottom:14px;text-shadow:0 1px 3px rgba(192,57,43,0.2);">
+                            Will you be my Valentine?
+                        </p>
+                        <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(139,90,43,0.1);">
+                            <p style="font-size:9px;color:rgba(90,58,26,0.4);letter-spacing:2px;text-transform:uppercase;">~ tap again to read the full message ~</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="envelope-hint" id="envHint">🐟 Tap to open 🐟</div>
+        `;
+        document.body.appendChild(scene);
+    }, 700);
+}
+
+// ══════════════════════════════════════════════
+// OPEN ENVELOPE → then show card
+// ══════════════════════════════════════════════
+let envelopeOpened = false;
+function openEnvelope() {
+    if (envelopeOpened) {
+        showFullCard();
+        return;
+    }
+    envelopeOpened = true;
+    const env = document.getElementById('envelope');
+    env.classList.add('opened');
+
+    // burst of bubbles
+    for(let i=0;i<15;i++){
+        setTimeout(()=>{
+            const b = document.createElement('div');
+            b.className = 'bubble';
+            const s = 8+Math.random()*20;
+            b.style.width=s+'px'; b.style.height=s+'px';
+            const rect = env.getBoundingClientRect();
+            b.style.left = (rect.left + Math.random()*rect.width)+'px';
+            b.style.bottom = (window.innerHeight - rect.top)+'px';
+            b.style.animation = `bubbleUp ${3+Math.random()*3}s ease-in forwards`;
+            document.body.appendChild(b);
+            setTimeout(()=>b.remove(), 6000);
+        }, i*60);
+    }
+
+    document.getElementById('envHint').textContent = '🐠 Tap again to read 🐠';
+
+    // small confetti
+    for(let i=0;i<20;i++){
+        setTimeout(()=>{
+            const c = document.createElement('div');
+            c.style.position='fixed';
+            c.style.zIndex='50';
+            c.textContent = ['💕','🐟','✨','🫧','🐠','💖','🐡','⭐'][Math.floor(Math.random()*8)];
+            c.style.fontSize = (12+Math.random()*16)+'px';
+            const rect = env.getBoundingClientRect();
+            c.style.left = (rect.left + rect.width/2 + (Math.random()-0.5)*120)+'px';
+            c.style.top = (rect.top - 20)+'px';
+            c.style.pointerEvents='none';
+            c.style.animation = `confettiFall ${2+Math.random()*2}s ease-in forwards`;
+            document.body.appendChild(c);
+            setTimeout(()=>c.remove(), 4000);
+        }, i*80);
+    }
+}
+
+// ══════════════════════════════════════════════
+// PHASE 3: FULL VALENTINE CARD
+// ══════════════════════════════════════════════
+function showFullCard() {
+    // fade out envelope
+    const scene = document.querySelector('.envelope-scene');
+    scene.style.transition = 'opacity 0.8s, transform 0.8s';
+    scene.style.opacity = '0';
+    scene.style.transform = 'translateY(-40px) scale(0.85)';
+
+    setTimeout(() => {
+        scene.remove();
+
+        // turtle crossing
+        const turtle = document.createElement('div');
+        turtle.style.cssText = 'position:fixed;font-size:38px;top:25%;pointer-events:none;z-index:2;opacity:0.35;';
+        turtle.style.animation = 'turtleSwim 20s linear infinite';
+        turtle.textContent = '🐢';
+        document.body.appendChild(turtle);
+
+        // more seahorses
+        for(let i=0;i<2;i++){
+            const s = document.createElement('div');
+            s.style.cssText = `position:fixed;font-size:${28+Math.random()*14}px;${i?'left':'right'}:${5+Math.random()*8}%;top:${30+Math.random()*30}%;opacity:0.2;pointer-events:none;z-index:2;`;
+            s.style.animation = `seahorseBob ${3+Math.random()*3}s ease-in-out infinite`;
+            s.style.animationDelay = i+'s';
+            s.textContent = '🦑';
+            document.body.appendChild(s);
+        }
+
+        // The Card
+        const card = document.createElement('div');
+        card.className = 'ocean-card';
+        card.innerHTML = `
+            <!-- kissing fish -->
+            <div style="text-align:center;margin-bottom:14px;position:relative;height:48px;">
+                <span style="display:inline-block;font-size:34px;animation:kissLeft 2s ease-in-out infinite;">🐠</span>
+                <span style="display:inline-block;font-size:16px;animation:heartPop 2s ease-in-out infinite;color:#ff6b9d;">💕</span>
+                <span style="display:inline-block;font-size:34px;animation:kissRight 2s ease-in-out infinite;">🐟</span>
+            </div>
+
+            <!-- name -->
+            <h2 class="handwritten" style="font-size:30px;color:#a8e6ff;text-align:center;margin-bottom:4px;text-shadow:0 0 18px rgba(168,230,255,0.35);">
+                Dear Glyza S. Coloma,
+            </h2>
+            <div style="text-align:center;margin-bottom:18px;">
+                <span style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);">~ 🐚 from the depths of my heart 🐚 ~</span>
+            </div>
+
+            <!-- message -->
+            <div style="background:rgba(255,255,255,0.04);border-radius:18px;padding:20px 16px;margin-bottom:20px;border:1px solid rgba(255,255,255,0.06);position:relative;">
+                <p style="font-size:13px;line-height:1.8;color:rgba(255,255,255,0.82);text-align:center;font-style:italic;">
+                    "You're the only woman I'll ever have eyes for as long as I live. Of all the lives that exist, I am so happy to exist in yours. 🌊<br><br>
+                    I'm always grateful that you're by my side. You make my days lighter and my heart happier. You give me comfort when I'm tired and peace when I feel lost. I may not be perfect, but having you makes me feel complete. You're my blessing, my love, and my safe place. 💕<br><br>
+                    Kaya of all the fish in the sea, ikaw po talaga ang catch of a lifetime ko. Ikaw lang ang gusto kong kasama mag-swim sa buhay. 🐡💗"
+                </p>
+                <span style="position:absolute;top:8px;left:12px;font-size:11px;opacity:0.2;">🌊</span>
+                <span style="position:absolute;top:8px;right:12px;font-size:11px;opacity:0.2;">🌊</span>
+                <span style="position:absolute;bottom:8px;left:12px;font-size:11px;opacity:0.2;">🐚</span>
+                <span style="position:absolute;bottom:8px;right:12px;font-size:11px;opacity:0.2;">🐚</span>
+            </div>
+
+            <!-- be my valentine -->
+            <div style="text-align:center;margin-bottom:20px;">
+                <p style="font-size:12px;color:rgba(168,230,255,0.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Will you</p>
+                <p class="handwritten" style="font-size:36px;background:linear-gradient(135deg,#ff9a9e,#fad0c4,#a8e6ff,#ff9a9e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                    Be My Valentine?
+                </p>
+                <div style="margin-top:6px;font-size:20px;">🐠 💖 🐟</div>
+            </div>
+
+            <!-- signature -->
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(255,255,255,0.06);padding-top:14px;">
+                <div style="font-size:8px;color:rgba(168,230,255,0.35);text-transform:uppercase;letter-spacing:2px;line-height:1.6;max-width:130px;">
+                    🫧 You're the only fish in my sea 🫧
+                </div>
+                <div style="text-align:right;">
+                    <p style="font-size:9px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:3px;">Forever yours,</p>
+                    <p class="handwritten" style="font-size:24px;color:#ffb8d0;text-shadow:0 0 12px rgba(255,184,208,0.25);">Bibong 🐡</p>
+                </div>
+            </div>
+
+            <div id="card-sparkles" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:28px;"></div>
+        `;
+        document.body.appendChild(card);
+
+        // after appear, add float
+        setTimeout(()=>{
+            card.style.opacity = '1';
+            card.style.animation = 'cardFloat 4s ease-in-out infinite';
+        }, 1300);
+
+        // sparkles
+        const sp = document.getElementById('card-sparkles');
+        function addSp() {
+            const s = document.createElement('div');
+            s.textContent = ['✨','⭐','💫','🫧','🌟'][Math.floor(Math.random()*5)];
+            s.style.position='absolute';
+            s.style.fontSize=(7+Math.random()*11)+'px';
+            s.style.left=Math.random()*100+'%';
+            s.style.top=Math.random()*100+'%';
+            s.style.animation=`sparkle ${1.5+Math.random()*2}s ease-in-out forwards`;
+            s.style.pointerEvents='none';
+            sp.appendChild(s);
+            setTimeout(()=>s.remove(),3500);
+        }
+        setInterval(addSp, 500);
+
+        // floating hearts
+        function fh() {
+            const h = document.createElement('div');
+            h.textContent = ['💗','💕','💖','🩷','🤍','🫧'][Math.floor(Math.random()*6)];
+            h.style.cssText = `position:fixed;font-size:${12+Math.random()*14}px;left:${Math.random()*100}%;bottom:0;pointer-events:none;z-index:4;`;
+            h.style.animation = `floatHeart ${3+Math.random()*4}s ease-out forwards`;
+            document.body.appendChild(h);
+            setTimeout(()=>h.remove(),7000);
+        }
+        setInterval(fh, 1400);
+
+        // big confetti burst for reveal
+        for(let i=0;i<30;i++){
+            setTimeout(()=>{
+                const c = document.createElement('div');
+                c.style.position='fixed'; c.style.zIndex='50'; c.style.pointerEvents='none';
+                c.textContent = ['💕','🐟','✨','🫧','🐠','💖','🐡','⭐','🪼','🐚','🩷','💫'][Math.floor(Math.random()*12)];
+                c.style.fontSize=(14+Math.random()*20)+'px';
+                c.style.left = (Math.random()*100)+'vw';
+                c.style.top = '-20px';
+                c.style.animation = `confettiFall ${2.5+Math.random()*3}s ease-in forwards`;
+                document.body.appendChild(c);
+                setTimeout(()=>c.remove(),6000);
+            }, i*60);
+        }
+    }, 900);
+}
+</script>
+
+</body>
+</html>
